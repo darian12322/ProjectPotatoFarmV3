@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://supxg1ssdrrf"]
+
+[ext_resource type="PackedScene" uid="uid://bdc3rs7jbs7ug" path="res://scene/ClickerFarm/control.tscn" id="1_2kwde"]
+[ext_resource type="Texture2D" uid="uid://f57xcjyjaamm" path="res://scene/Images/BackgroundFarmLand.png" id="1_4ovs1"]
+[ext_resource type="Texture2D" uid="uid://dqkkwfapv3shj" path="res://scene/Images/BacgkroundUpgradesDirt.png" id="3_kxo8s"]
+[ext_resource type="PackedScene" uid="uid://cfaysmyosq1i6" path="res://scene/Upgrades/upgrades.tscn" id="4_8xuf2"]
+
+[sub_resource type="Theme" id="Theme_y8utn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyklo"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 0)
+
+[sub_resource type="Theme" id="Theme_fdk4s"]
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 5.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainView" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 1400)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MainView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4ovs1")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 3.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PotatoFarm" parent="VBoxContainer/MainView" instance=ExtResource("1_2kwde")]
+layout_mode = 1
+offset_top = 4.0
+offset_bottom = 4.0
+
+[node name="BottomPanel" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BottomPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -9.0
+offset_right = 1.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kxo8s")
+expand_mode = 1
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/BottomPanel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 7.0
+offset_right = 1005.0
+offset_bottom = 441.0
+theme = SubResource("Theme_y8utn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xyklo")
+
+[node name="Potatoes Upgrade" type="TabBar" parent="VBoxContainer/BottomPanel/TabContainer"]
+layout_mode = 2
+theme = SubResource("Theme_fdk4s")
+
+[node name="Upgrades" parent="VBoxContainer/BottomPanel/TabContainer/Potatoes Upgrade" instance=ExtResource("4_8xuf2")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Passive Generator" type="TabBar" parent="VBoxContainer/BottomPanel/TabContainer"]
+visible = false
+layout_mode = 2
